@@ -1,0 +1,16 @@
+[
+    {
+        "id": "1",
+        "post_id": 9,
+        "author": "CareerExplorer123",
+        "comment": "Great insights! I found the section on interview strategies particularly helpful.",
+        "creation_date": "2024-04-04"
+    },
+    {
+        "id": "2",
+        "post_id": 9,
+        "author": "NewCareerSeeker",
+        "comment": "Thank you for this valuable resource! I'm just starting my career journey and this blog has been incredibly insightful.",
+        "creation_date": "2024-04-05"
+    }
+]
