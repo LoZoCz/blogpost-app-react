@@ -15,10 +15,13 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
                     <Route path="/" element={<HomePage />} />
                     <Route path="/add-post" element={<AddPost />} />
                     <Route path="/post/:id" element={<PostPage />} />
+                    <Route path="/*" element={<HomePage />} />
                 </Routes>
             </Router>
         </AnimatePresence>
     </React.StrictMode>
 )
 
-//TODO logika dodawania komentarzy
+//TODO?? blad formularza przy f5
+//TODO filtoranie kometarzy i postow
+//TODO reakcje przy postach

@@ -2,6 +2,7 @@ import PostBox from './PostBox'
 import usePostsList from '../../hooks/usePostsList'
 import MainSectionLayout from '../../layouts/MainSectionLayout'
 import SkeletonListLoad from './SkeletonListLoad'
+import { sortPostsByCreationDate } from '../../utils/sortDates'
 
 const MainSect = () => {
     const postList = usePostsList()
@@ -11,7 +12,7 @@ const MainSect = () => {
             {postList === null ? (
                 <SkeletonListLoad />
             ) : (
-                postList.map((item, index) => (
+                sortPostsByCreationDate(postList).map((item, index) => (
                     <PostBox key={index} id={index} data={item} />
                 ))
             )}

@@ -6,26 +6,39 @@ import ErrorPara from './ErrorPara'
 import db from '../../data/firebase'
 import { addDoc, collection, serverTimestamp } from 'firebase/firestore'
 import { addPostFormFields } from '../../types/types'
+import { useNavigate } from 'react-router-dom'
+import { randomAuthor } from '../../utils/randomAuthor'
 
 const MainAddForm = () => {
     const {
         register,
         handleSubmit,
         setError,
+        reset,
         formState: { errors, isSubmitting },
     } = useForm<addPostFormFields>()
+    const navigate = useNavigate()
 
     const onSumbit: SubmitHandler<addPostFormFields> = async (data) => {
         try {
-            const postData = {
+            if (data.author === '') {
+                data = {
+                    ...data,
+                    author: randomAuthor(),
+                }
+            }
+
+            data = {
                 ...data,
                 creation_date: serverTimestamp(),
             }
 
             await addDoc(
                 collection(db, import.meta.env.VITE_BD_POSTS_PATH),
-                postData
+                data
             )
+            reset()
+            navigate('/')
         } catch (error) {
             setError('root', { message: 'Coś poszło nie tak' })
             console.error('Error adding document: ', error)
@@ -37,13 +50,13 @@ const MainAddForm = () => {
             <BackBtn />
             <form
                 onSubmit={handleSubmit(onSumbit)}
-                className="tablet:max-w-[50%] mx-auto flex max-w-full flex-col items-center justify-center space-y-6"
+                className="mx-auto flex max-w-full flex-col items-center justify-center space-y-6 tablet:max-w-[50%]"
             >
                 <h1 className="text-center text-3xl font-semibold mobile:text-5xl">
                     Add new Post
                 </h1>
                 <div className="space-y-4">
-                    <div className="tablet:flex-row flex w-full flex-col items-center justify-between gap-4">
+                    <div className="flex w-full flex-col items-center justify-between gap-4 tablet:flex-row">
                         <div>
                             <input
                                 type="text"
@@ -62,13 +75,8 @@ const MainAddForm = () => {
                                 type="text"
                                 placeholder="Author"
                                 className="block w-full rounded-md bg-contrast/50 p-2 text-letter outline outline-1 outline-bluish-600/25  placeholder:text-letter/75 dark:outline-contrast/15"
-                                {...register('author', {
-                                    required: 'Author field is required!',
-                                })}
+                                {...register('author')}
                             />
-                            {errors.author && (
-                                <ErrorPara>{errors.author.message}</ErrorPara>
-                            )}
                         </div>
                     </div>
                     <div className="mobile:w-full">

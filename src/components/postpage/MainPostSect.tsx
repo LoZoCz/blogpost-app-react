@@ -7,6 +7,7 @@ import { PlusCircleIcon } from '@heroicons/react/16/solid'
 import { useState } from 'react'
 import AddCommModul from './AddCommModul'
 import { AnimatePresence } from 'framer-motion'
+import { sortCommsByCreationDate } from '../../utils/sortDates'
 
 const MainPostSect = () => {
     const id = useParams().id
@@ -36,17 +37,21 @@ const MainPostSect = () => {
             <p className="max-w-[85%] text-letter/85 dark:text-contrast/85">
                 {postData?.description}
             </p>
-            <h2 className="pt-6 text-2xl">
-                Comments{' '}
-                <span className="text-letter/50 dark:text-contrast/50">
-                    {postComments?.length || 0}
-                </span>
-            </h2>
+            <div className="flex items-center justify-between gap-2">
+                <h2 className="pt-6 text-2xl">
+                    Comments{' '}
+                    <span className="text-letter/50 dark:text-contrast/50">
+                        {postComments?.length || 0}
+                    </span>
+                </h2>
+            </div>
             <article className="space-y-6">
                 {postComments &&
-                    postComments.map((comment, index) => (
-                        <CommentBox data={comment} key={index} />
-                    ))}
+                    sortCommsByCreationDate(postComments).map(
+                        (comment, index) => (
+                            <CommentBox data={comment} key={index} />
+                        )
+                    )}
                 <div
                     onClick={() => toggleModule()}
                     className="flex cursor-pointer items-center justify-center gap-2 rounded-md px-2 py-6 outline outline-1 outline-bluish-600/25 transition-colors duration-300 hover:bg-bluish-600/10 dark:outline-contrast/15 dark:hover:bg-contrast/10"

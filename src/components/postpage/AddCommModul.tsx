@@ -7,6 +7,7 @@ import { motion } from 'framer-motion'
 import { useParams } from 'react-router-dom'
 import { addDoc, collection, serverTimestamp } from 'firebase/firestore'
 import db from '../../data/firebase'
+import { randomAuthor } from '../../utils/randomAuthor'
 
 type Props = {
     closeModule: () => void
@@ -34,12 +35,20 @@ const AddCommModul = ({ closeModule }: Props) => {
         register,
         handleSubmit,
         setError,
+        reset,
         formState: { errors, isSubmitting },
     } = useForm<addCommentFormFields>()
 
     const onSumbit: SubmitHandler<addCommentFormFields> = async (data) => {
         try {
-            const commData = {
+            if (data.author === '') {
+                data = {
+                    ...data,
+                    author: randomAuthor(),
+                }
+            }
+
+            data = {
                 ...data,
                 postID: id,
                 creation_date: serverTimestamp(),
@@ -47,11 +56,12 @@ const AddCommModul = ({ closeModule }: Props) => {
 
             await addDoc(
                 collection(db, import.meta.env.VITE_BD_COMMENTS_PATH),
-                commData
+                data
             )
+            reset()
             closeModule()
         } catch (error) {
-            setError('root', { message: 'Coś poszło nie tak' })
+            setError('root', { message: 'Something went wrong' })
         }
     }
 
@@ -62,7 +72,7 @@ const AddCommModul = ({ closeModule }: Props) => {
                 initial="initial"
                 animate="in"
                 exit="out"
-                className="tablet:top-1/2 tablet:max-w-[35%] absolute left-1/2 top-1/3 z-10 m-0 w-[95%] -translate-x-1/2 -translate-y-1/2 space-y-4 rounded-md bg-basic p-4 dark:bg-bluish-600 mobile:w-[70%]"
+                className="absolute left-1/2 top-1/3 z-10 m-0 w-[95%] -translate-x-1/2 -translate-y-1/2 space-y-4 rounded-md bg-basic p-4 dark:bg-bluish-600 mobile:w-[70%] tablet:top-1/2 tablet:max-w-[35%]"
                 onSubmit={handleSubmit(onSumbit)}
             >
                 <div className="flex justify-between gap-2">
@@ -81,13 +91,8 @@ const AddCommModul = ({ closeModule }: Props) => {
                         type="text"
                         placeholder="Enter your name"
                         className="mb-2 block rounded-md bg-contrast/50 p-2 text-letter outline outline-1 outline-bluish-600/25  placeholder:text-letter/75 dark:outline-contrast/15"
-                        {...register('author', {
-                            required: 'Author field is required!',
-                        })}
+                        {...register('author')}
                     />
-                    {errors.author && (
-                        <ErrorPara>{errors.author.message}</ErrorPara>
-                    )}
                 </div>
                 <div className="space-y-2">
                     <label className="block">Comment</label>

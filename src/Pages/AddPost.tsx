@@ -4,7 +4,7 @@ import MainLayout from '../layouts/MainLayout'
 
 const AddPost = () => {
     return (
-        <MainLayout>
+        <MainLayout overflow={false}>
             <Header />
             <MainAddForm />
         </MainLayout>

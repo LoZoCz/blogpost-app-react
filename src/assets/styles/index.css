@@ -22,3 +22,16 @@ html {
 ::-webkit-scrollbar-thumb:hover {
     @apply bg-bluish-600 dark:bg-redish-600;
 }
+
+.toastSpanAnimation {
+    animation: spanWidth 3s linear forwards;
+}
+
+@keyframes spanWidth {
+    0% {
+        width: 0%;
+    }
+    100% {
+        width: 100%;
+    }
+}
