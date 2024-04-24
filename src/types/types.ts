@@ -5,13 +5,13 @@ export type postDataTypes = {
     id: string
     title: string
     description: string
-    creation_date: string
+    creation_date: timeTypes
     author: string
 }
 
 export type postCommentsTypes = {
     comment: string
-    creation_date: string
+    creation_date: timeTypes
     author: string
 }
 

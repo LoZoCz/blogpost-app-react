@@ -2,7 +2,6 @@ import { useEffect, useState } from 'react'
 import db from '../data/firebase'
 import { collection, onSnapshot } from 'firebase/firestore'
 import { postDataTypes } from '../types/types'
-import { timeConversion } from '../utils/timeConversion'
 
 const usePostsList = () => {
     const [postList, setPostList] = useState<postDataTypes[] | null>(null)
@@ -17,7 +16,7 @@ const usePostsList = () => {
                         id: doc.id,
                         title: post.title || '',
                         description: post.description || '',
-                        creation_date: timeConversion(post.creation_date) || '',
+                        creation_date: post.creation_date || '',
                         author: post.author || '',
                     }
 

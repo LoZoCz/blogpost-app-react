@@ -8,6 +8,7 @@ import { useState } from 'react'
 import AddCommModul from './AddCommModul'
 import { AnimatePresence } from 'framer-motion'
 import { sortCommsByCreationDate } from '../../utils/sortDates'
+import { timeConversion } from '../../utils/timeConversion'
 
 const MainPostSect = () => {
     const id = useParams().id
@@ -31,7 +32,7 @@ const MainPostSect = () => {
                     </p>
                 </div>
                 <p className="text-right text-letter/50 dark:text-contrast/50">
-                    {postData?.creation_date}
+                    {timeConversion(postData?.creation_date)}
                 </p>
             </article>
             <p className="max-w-[85%] text-letter/85 dark:text-contrast/85">

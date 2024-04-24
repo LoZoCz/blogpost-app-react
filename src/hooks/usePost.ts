@@ -2,7 +2,6 @@ import { useEffect, useState } from 'react'
 import db from '../data/firebase'
 import { collection, doc, onSnapshot } from 'firebase/firestore'
 import { postCommentsTypes, postDataTypes } from '../types/types'
-import { timeConversion } from '../utils/timeConversion'
 
 const usePost = (postId: string | undefined) => {
     const [postData, setPostData] = useState<postDataTypes | null>(null)
@@ -26,7 +25,7 @@ const usePost = (postId: string | undefined) => {
                     id: snapshot.id,
                     title: post.title || '',
                     description: post.description || '',
-                    creation_date: timeConversion(post.creation_date) || '',
+                    creation_date: post.creation_date || '',
                     author: post.author || '',
                 })
             }
@@ -42,8 +41,7 @@ const usePost = (postId: string | undefined) => {
                 setPostComments(
                     filteredSnapshot.map((comm) => ({
                         comment: comm.data().comment || '',
-                        creation_date:
-                            timeConversion(comm.data().creation_date) || '',
+                        creation_date: comm.data().creation_date || '',
                         author: comm.data().author || '',
                     }))
                 )

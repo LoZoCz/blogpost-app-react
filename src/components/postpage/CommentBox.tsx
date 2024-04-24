@@ -1,4 +1,5 @@
 import { postCommentsTypes } from '../../types/types'
+import { timeConversion } from '../../utils/timeConversion'
 
 type Props = {
     data: postCommentsTypes | null
@@ -12,7 +13,7 @@ const CommentBox = ({ data }: Props) => {
                     {data?.author}
                 </p>
                 <p className="dark: text-letter/50 dark:text-contrast/50">
-                    {data?.creation_date}
+                    {timeConversion(data?.creation_date)}
                 </p>
             </div>
             <p className="max-w-[65%] text-letter/85 dark:text-contrast/85">

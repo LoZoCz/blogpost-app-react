@@ -2,6 +2,7 @@ import { useNavigate } from 'react-router-dom'
 import { postDataTypes } from '../../types/types'
 import usePost from '../../hooks/usePost'
 import { truncateText } from '../../utils/truncateText'
+import { timeConversion } from '../../utils/timeConversion'
 
 type Props = {
     id: number
@@ -13,7 +14,7 @@ const PostBox = ({
         id: '',
         title: '',
         description: '',
-        creation_date: '',
+        creation_date: { seconds: 0, miliseconds: 0 },
         author: '',
     },
 }: Props) => {
@@ -34,7 +35,7 @@ const PostBox = ({
                     {truncateText(data?.title, 70)}
                 </h2>
                 <p className="text-right text-letter/85">
-                    {data?.creation_date}
+                    {timeConversion(data?.creation_date)}
                 </p>
             </div>
             <p id="description" className="max-w-[75%] text-letter/85">

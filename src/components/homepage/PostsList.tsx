@@ -7,6 +7,8 @@ import usePostsList from '../../hooks/usePostsList'
 const PostsList: FC = () => {
     const postList = usePostsList()
 
+    console.log(postList && sortPostsByCreationDate(postList))
+
     return (
         <section className="grid grid-cols-1 gap-4 tablet:grid-cols-2">
             {postList === null ? (
