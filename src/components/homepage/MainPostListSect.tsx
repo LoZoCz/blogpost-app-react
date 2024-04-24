@@ -1,21 +1,12 @@
-import PostBox from './PostBox'
-import usePostsList from '../../hooks/usePostsList'
 import MainSectionLayout from '../../layouts/MainSectionLayout'
-import SkeletonListLoad from './SkeletonListLoad'
-import { sortPostsByCreationDate } from '../../utils/sortDates'
+import HeroSection from './HeroSection'
+import PostsList from './PostsList'
 
 const MainSect = () => {
-    const postList = usePostsList()
-
     return (
         <MainSectionLayout>
-            {postList === null ? (
-                <SkeletonListLoad />
-            ) : (
-                sortPostsByCreationDate(postList).map((item, index) => (
-                    <PostBox key={index} id={index} data={item} />
-                ))
-            )}
+            <HeroSection />
+            <PostsList />
         </MainSectionLayout>
     )
 }

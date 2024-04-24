@@ -35,9 +35,9 @@ const Notification = ({ message }: Props) => {
             variants={toastVariants}
             initial="hidden"
             animate={isVisible ? 'visible' : 'hidden'}
-            className="absolute bottom-4 left-4 overflow-hidden rounded-md bg-bluish-300 p-2 px-4 py-2 text-lg font-semibold text-letter dark:bg-redish-300 dark:text-contrast"
+            className="absolute bottom-4 left-4 overflow-hidden rounded-md bg-bluish-300 p-2 px-4 py-2 text-lg font-semibold text-letter dark:bg-orangish-300 dark:text-contrast"
         >
-            <span className="toastSpanAnimation absolute left-0 top-0 h-1 bg-redish-300 dark:bg-bluish-300" />
+            <span className="toastSpanAnimation absolute left-0 top-0 h-1 bg-orangish-300 dark:bg-bluish-300" />
             {message}
         </motion.div>
     )

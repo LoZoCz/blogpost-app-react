@@ -13,7 +13,7 @@ const Header = () => {
             <div className="flex gap-4">
                 <button
                     onClick={() => toggleDarkMode()}
-                    className="group rounded-md bg-bluish-300 px-4 py-2 text-lg font-semibold transition-colors duration-300 hover:bg-bluish-600 dark:bg-redish-300 dark:hover:bg-redish-600"
+                    className="group rounded-md bg-bluish-300 px-4 py-2 text-lg font-semibold transition-colors duration-300 hover:bg-bluish-600 dark:bg-orangish-300 dark:hover:bg-orangish-600"
                 >
                     {darkMode === 'light' ? (
                         <MoonIcon className="size-6 text-letter transition-colors duration-300 group-hover:text-contrast" />
@@ -23,7 +23,7 @@ const Header = () => {
                 </button>
                 <Link
                     to="/add-post"
-                    className="rounded-md bg-bluish-300 px-4 py-2 text-lg font-semibold text-letter transition-colors duration-300 hover:bg-bluish-600 hover:text-contrast dark:bg-redish-300 dark:text-basic dark:hover:bg-redish-600"
+                    className="rounded-md bg-bluish-300 px-4 py-2 text-lg font-semibold text-letter transition-colors duration-300 hover:bg-bluish-600 hover:text-contrast dark:bg-orangish-300 dark:text-basic dark:hover:bg-orangish-600"
                 >
                     Add post
                 </Link>

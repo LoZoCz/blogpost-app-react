@@ -27,7 +27,7 @@ const MainSectionLayout = ({ children }: Props) => {
             animate="in"
             exit="out"
             variants={mainVariants}
-            className="tablet:max-w-[60%] tablet:p-6 mx-auto w-full space-y-4 p-4"
+            className="mx-auto max-w-[90rem] space-y-4 p-4 tablet:p-6"
         >
             {children}
         </motion.section>

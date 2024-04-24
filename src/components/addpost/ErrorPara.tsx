@@ -4,7 +4,7 @@ type Props = {
 
 const ErrorPara = ({ children }: Props) => {
     return (
-        <p className="rounded-md text-redish-600 dark:text-red-200">
+        <p className="text-orangish-600 rounded-md dark:text-red-200">
             {children}
         </p>
     )

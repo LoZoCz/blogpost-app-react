@@ -8,13 +8,17 @@ export default {
                 basic: '#fdf0d5',
                 letter: '#000814',
                 contrast: '#f0f0f0',
-                redish: {
-                    300: '#c1121f',
-                    600: '#780000',
+                orangish: {
+                    300: '#f97316',
+                    600: '#c2410c',
                 },
                 bluish: {
                     300: '#669bbc',
                     600: '#003049',
+                },
+                greyish: {
+                    300: '#52525b',
+                    600: '#18181b',
                 },
             },
             fontFamily: {

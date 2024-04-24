@@ -1,6 +1,7 @@
 import { useNavigate } from 'react-router-dom'
 import { postDataTypes } from '../../types/types'
 import usePost from '../../hooks/usePost'
+import { truncateText } from '../../utils/truncateText'
 
 type Props = {
     id: number
@@ -26,20 +27,20 @@ const PostBox = ({
     return (
         <article
             onClick={() => handleClick()}
-            className="cursor-pointer space-y-4 rounded-md bg-contrast/50 p-4 shadow-lg outline outline-1 outline-bluish-600/25 dark:outline-contrast/15"
+            className="flex min-h-[12rem] cursor-pointer flex-col gap-4 rounded-md bg-contrast/50 p-4 shadow-lg outline outline-1 outline-bluish-600/25 dark:outline-contrast/15"
         >
             <div className="flex justify-between gap-4">
                 <h2 className="text-2xl font-semibold text-letter">
-                    {data?.title}
+                    {truncateText(data?.title, 70)}
                 </h2>
                 <p className="text-right text-letter/85">
                     {data?.creation_date}
                 </p>
             </div>
-            <p className="max-w-[75%] truncate text-letter/85">
-                {data?.description}
+            <p id="description" className="max-w-[75%] text-letter/85">
+                {truncateText(data?.description, 80)}
             </p>
-            <div className="flex justify-between gap-4">
+            <div className="mt-auto flex justify-between gap-4 justify-self-end">
                 <p className="text-sm text-letter/50">{data?.author}</p>
                 <p className="text-right text-sm text-letter/70">
                     Comments: {postComments?.length || 0}

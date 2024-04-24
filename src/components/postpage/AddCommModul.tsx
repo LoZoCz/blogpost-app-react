@@ -80,7 +80,7 @@ const AddCommModul = ({ closeModule }: Props) => {
                     <button
                         type="button"
                         onClick={() => closeModule()}
-                        className="group rounded-md bg-bluish-300 p-2 text-lg font-semibold transition-colors duration-300 hover:bg-bluish-600 dark:bg-redish-300 dark:hover:bg-redish-600"
+                        className="group rounded-md bg-bluish-300 p-2 text-lg font-semibold transition-colors duration-300 hover:bg-bluish-600 dark:bg-orangish-300 dark:hover:bg-orangish-600"
                     >
                         <XMarkIcon className="size-6 text-letter transition-colors duration-300 group-hover:text-contrast dark:text-basic" />
                     </button>
@@ -113,7 +113,7 @@ const AddCommModul = ({ closeModule }: Props) => {
                     type="submit"
                     value="Add"
                     disabled={isSubmitting}
-                    className="mx-auto block w-fit cursor-pointer rounded-md bg-bluish-300 p-2 px-8 py-2 text-2xl font-semibold text-letter transition-colors duration-300 hover:bg-bluish-600 hover:text-contrast dark:bg-redish-300 dark:text-basic dark:hover:bg-redish-600"
+                    className="mx-auto block w-fit cursor-pointer rounded-md bg-bluish-300 p-2 px-8 py-2 text-2xl font-semibold text-letter transition-colors duration-300 hover:bg-bluish-600 hover:text-contrast dark:bg-orangish-300 dark:text-basic dark:hover:bg-orangish-600"
                 >
                     {isSubmitting ? <Spinner size="size-8" /> : 'Add comment'}
                 </button>
