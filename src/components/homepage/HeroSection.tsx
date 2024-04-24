@@ -4,7 +4,7 @@ import video from '../../assets/images/blogVideo.mp4'
 const HeroSection: FC = () => {
     return (
         <section className="relative grid h-96 place-items-center gap-2">
-            <h1 className="z-10 text-center text-4xl font-semibold">
+            <h1 className="z-10 text-center text-5xl font-semibold">
                 ChatNiche - Blog about everything
             </h1>
             <div className="absolute top-0 h-96 w-screen">

@@ -30,7 +30,7 @@ const PostBox = ({
             className="flex min-h-[12rem] cursor-pointer flex-col gap-4 rounded-md bg-contrast/50 p-4 shadow-lg outline outline-1 outline-bluish-600/25 dark:outline-contrast/15"
         >
             <div className="flex justify-between gap-4">
-                <h2 className="text-2xl font-semibold text-letter">
+                <h2 className="w-[65%] text-2xl font-semibold text-letter">
                     {truncateText(data?.title, 70)}
                 </h2>
                 <p className="text-right text-letter/85">
